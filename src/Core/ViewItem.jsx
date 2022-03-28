@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {FaArrowLeft,FaPlusSquare,FaMinusSquare,IoCaretBack,IoCaretForward} from 'react-icons/all'
 import { Redirect } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { isAuthenticated } from '../Auth/helper/authApiCalls'
 import { addItemToCart } from '../User/helper/userUtility'
 import { getSingleProductPhoto } from './helper/coreApiCalls'
 import OrderPage from './OrderPage'
@@ -47,6 +48,8 @@ function ViewItem({
         next()
     }
 
+    const {user,token} = isAuthenticated()
+
     useEffect(()=>{
         preloadImages(()=>{
             setTimeout(()=>{
@@ -84,10 +87,14 @@ function ViewItem({
     }
 
     const addItemIntoCart = () => {
-        if(product.stock > 0 && count > 0){
-            addItemToCart(product,count,()=>{
-                setRedirect(true)
-            })      
+        if(token) {
+            if(product.stock > 0 && count > 0){
+                addItemToCart(product,count,()=>{
+                    setRedirect(true)
+                })      
+            }
+        }else{
+            toast.error("Please login first",{theme: 'dark'})
         }
     }
 
