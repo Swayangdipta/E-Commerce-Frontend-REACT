@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom'
 import Hero from './Hero'
 
 
+
+
 export default function Home() {
 
     const [product,setProduct] = useState({
@@ -22,7 +24,7 @@ export default function Home() {
         all: []
     })
 
-    const [openActive,setOpenActive] = useState(true)
+    const [openActive,setOpenActive] = useState('home')
 
 
 
@@ -62,7 +64,6 @@ export default function Home() {
             <Hero />
 
             {
-                openActive ? (
                 categories.all.length > 0 ? (
                     categories.all.map((category,index)=>(
                         index < 5 && (
@@ -77,7 +78,7 @@ export default function Home() {
                                                 if(prod.category._id === category._id){
                                                     return(
                                                         inde < 15 ? (
-                                                            <Item openActive={openActive} setOpenActive={setOpenActive} product={prod} key={inde} location="home" />
+                                                            <Item product={prod} key={inde} location="home" />
                                                         ) : ''
                                                     )
                                                 }
@@ -110,9 +111,7 @@ export default function Home() {
                     )
 
                     ))
-                ) : ('')                    
                 ) : ('')
-
             }
 
             <Footer />

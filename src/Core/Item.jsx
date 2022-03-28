@@ -11,9 +11,7 @@ const API = process.env.REACT_APP_BACKEND
 function Item({
     location = "home",product,
     refresh = undefined,
-    setRefresh = f=>f,
-    openActive = undefined,
-    setOpenActive= f=>f
+    setRefresh = f=>f
 }) {
     const [isItemOpen,setIsItemOpen] = useState(false)
 
@@ -33,7 +31,6 @@ function Item({
         <>
         <div className="item__container" onClick={e=>{
                         setIsItemOpen(true)
-                        setOpenActive(!openActive)
                     }}>
             <img src={`${API}/product/single/photo/${product._id}?photo=${product.photos[0]._id}`} className="item__image" />) : (<img src={loader} className="item__image" />
             <span className="item__body">
@@ -55,7 +52,7 @@ function Item({
             </span>
         </div>
         {
-            isItemOpen && (<ViewItem closeBg={openActive} setCloseBg={setOpenActive} location={location} product={product} setOpenActive={setIsItemOpen} openActive={isItemOpen} photo={`${API}/product/single/photo/${product._id}?photo=${product.photos[0]._id}`} />)
+            isItemOpen && (<ViewItem location={location} product={product} setOpenActive={setIsItemOpen} openActive={isItemOpen} photo={`${API}/product/single/photo/${product._id}?photo=${product.photos[0]._id}`} />)
         }
         </>
     )

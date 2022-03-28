@@ -11,9 +11,7 @@ function ViewItem({
     setOpenActive = f=> f,
     openActive = undefined,
     photo,
-    location = 'home',
-    closeBg=undefined,
-    setCloseBg=f=>f
+    location = 'home'
 }) {
 
     const [count,setCount] = useState(1)
@@ -102,10 +100,7 @@ function ViewItem({
             }
             <div className="orders__container viewItem__container">
                 <header className="sectionHeader ordersHeader">
-                <i className="orders__goback" onClick={()=>{
-                        setOpenActive(false)
-                        setCloseBg(false)
-                    }}><FaArrowLeft /></i>
+                <i className="orders__goback" onClick={()=>setOpenActive(false)}><FaArrowLeft /></i>
                 <p className="orders__title">Specifications</p>
                 </header>
 
