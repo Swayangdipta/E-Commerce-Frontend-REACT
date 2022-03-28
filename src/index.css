@@ -63,7 +63,7 @@ code {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .searchBar,.menu{
@@ -2570,6 +2570,18 @@ font-weight: 600;
   .Hero__subTitle{
     font-size: 20px;
     margin-top: 20px;
+  }
+
+  .myProducts__item{
+    grid-template-columns: .5fr 1fr .5fr;
+  }
+
+  .myProducts__item__edit{
+    font-size: 20px;
+  }
+
+  .viewOrder__container{
+    width: 90vw;
   }
 }
 
