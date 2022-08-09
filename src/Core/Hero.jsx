@@ -6,6 +6,7 @@ const Hero = () => {
   return (
     <div className='Main__Hero'>
         <img src={bg} alt="" className="Hero__bg" />
+        <div className="hero__bg__adjustment__layer"></div>
         <h1 className="Hero__title">Re-Sell Anything</h1>
         <h3 className="Hero__subTitle">Buy , Sell and Re-Sell anything in your neighbourhood.</h3>
         <div className="Hero__Encouragement">

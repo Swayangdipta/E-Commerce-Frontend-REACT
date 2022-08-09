@@ -2126,6 +2126,8 @@ font-weight: 600;
   text-align: center;
   position: relative;
   border-bottom: 10px #e91e63 solid;
+  /* clip-path: polygon(100% 0, 100% 74%, 50% 100%, 0 74%, 0 0); */
+  margin-bottom: 50px;
 }
 
 .Hero__title{
@@ -2171,6 +2173,8 @@ font-weight: 600;
   height: 100%;
   object-fit: cover;
   z-index: 10;
+  /* clip-path: polygon(100% 0, 100% 74%, 50% 100%, 0 74%, 0 0); */
+  filter: brightness(0.5);
 }
 
 /* Media queries */

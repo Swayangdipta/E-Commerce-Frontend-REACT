@@ -18,7 +18,7 @@ const CreateProductForm = ({userId,setOpenAction=f=>f,option = "create",loadedPr
     seller: '',
     loadImages: true,
     isLoading: false,
-    formData: ""
+    formData: new FormData()
   })
 
   const {token,user} = isAuthenticated()
@@ -85,12 +85,14 @@ const CreateProductForm = ({userId,setOpenAction=f=>f,option = "create",loadedPr
 
   const handleSubmit = e => {
     e.preventDefault()
+    setInputs({...inputs,isLoading: true})
 
     if(user.role === 5){
         createProductDev(user._id,token,formData).then(data=>{
         if(data){
           if(data.error){
             toast.error(data.error,{theme: "dark"})
+            setInputs({...inputs,isLoading: false})
           }else{
             toast.success("Product added.",{theme: "dark"})
             setInputs({
@@ -142,7 +144,7 @@ const CreateProductForm = ({userId,setOpenAction=f=>f,option = "create",loadedPr
       })
     }
 
-    setInputs({...inputs,isLoading: false})
+    // setInputs({...inputs,isLoading: false})
   }
 
   return (

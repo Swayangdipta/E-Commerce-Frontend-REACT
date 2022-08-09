@@ -56,6 +56,7 @@ function Cart() {
         if(products.length > 0){
             if(payment.method === undefined){
                 toast.error("Please select a payment option.",{theme: 'dark'})
+                setLoading(false)
             }else if(payment.method === 'COD'){
                 let items = []
                 let date = Date.now()
@@ -92,6 +93,7 @@ function Cart() {
                     if(data){
                         if(data.error){
                             toast.error(data.error,{theme: 'dark'})
+                            setLoading(false)
                         }else{
                             let orderId = ''
                             orderId = {
@@ -101,10 +103,12 @@ function Cart() {
                                 if(data){
                                     if(data.error){
                                         toast.error(data.error,{theme: 'dark'})
+                                        setLoading(false)
                                     }else{
                                         emptyTheCart()
                                         setReload(!reload)
                                         toast.success("Order placed successfully.",{theme: 'dark'})
+                                        setLoading(false)
                                     }
                                 }
                             })
@@ -112,13 +116,14 @@ function Cart() {
                     }
                 }).catch(e=>{
                     console.log(e);
+                    setLoading(false)
                 })
             }
         }else{
             toast.error("Please add something in your cart.",{theme: 'dark'})
+            setLoading(false)
         }
 
-        setLoading(false)
     }
 
     useEffect(()=>{
